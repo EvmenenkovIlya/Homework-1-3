@@ -8,7 +8,7 @@ namespace HW_1_3
            Выведите в консоль результат деления A на B и остаток от деления.*/
         public static void FindingDivAndMod(int a, int b)
         {
-        
+
         }
 
         /* Пользователь вводит 2 числа (A и B).
@@ -23,7 +23,7 @@ namespace HW_1_3
            Поменяйте содержимое переменных A и B местами.*/
         public static void SwapVariableWithEachOther(int a, int b)
         {
-        
+
         }
 
         /* Пользователь вводит 3 не равных 0 числа (A, B и С).
@@ -42,11 +42,9 @@ namespace HW_1_3
         {
             double A = (y1 - y2) / (x1 - x2);
             double B = y2 - A * x2;
-            
+
             return $"Уравнение прямой Y = {A} * X + {B}";
         }
-
-
 
     }
 }
