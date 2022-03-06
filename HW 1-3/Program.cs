@@ -1,4 +1,4 @@
 ﻿using HW_1_3;
 
 
-Console.WriteLine(BranchStructuries.SortByIncrease(1,2,1));
+Console.WriteLine(Cycles.FindGreatestCommonDivisor(18, 24));
