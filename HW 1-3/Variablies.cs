@@ -4,23 +4,37 @@ namespace HW_1_3
 {
     static class Variablies
     {
-        /* 1. Пользователь вводит 2 числа (A и B).
-           Выведите в консоль результат деления A на B и остаток от деления.*/
-        public static int FindingDivAndMod(int a, int b, out int c, out int d)
-        {
 
+        /// <summary>
+        /// 1. Возвращает результат деления A на B (div) и остаток от деления (mod)
+        /// </summary>
+        public static void FindingDivAndMod(int a, int b, out int div, out int mod)
+        {
+            if (b == 0)
+            {
+                throw new Exception("Делитель b равен нулю.");
+            }
+            div = a / b;
+            mod = b;
         }
 
-        /* 2. Пользователь вводит 2 числа (A и B).
-           Выведите в консоль решение (5 * A + B^2) / (B - A)*/
+        /// <summary>
+        /// 2. Выводит в консоль решение (5 * A + B^2) / (B - A)
+        /// </summary>
         public static double FindTheValueOfTheExpression(double a, double b)
         {
+            if (b == a)
+            {
+                throw new Exception("Делитель вырежения равен нулю, т.к. Равны a и b.");
+            }
             double result = ((5 * a + b * b) / (b - 1));
             return result;
         }
 
-        /* 3. Пользователь вводит 2 строковых(string) значения(A и B).
-           Поменяйте содержимое переменных A и B местами.*/
+        /// <summary>
+        /// 3. Меняет содержимое строк местами.
+        /// </summary>
+
         public static void SwapVariables(ref string a, ref string b)
         {
             string tmp = b;
@@ -29,23 +43,44 @@ namespace HW_1_3
         }
 
         /* 4. Пользователь вводит 3 не равных 0 числа (A, B и С).
-           Выведите в консоль решение(значение X) линейного уравнения стандартного вида,
-           где A*X+B=C.*/
+           */
+
+        /// <summary>
+        /// 3. Выводит в консоль решение(значение X) линейного уравнения 
+        /// стандартного вида,где A*X+B=C.
+        /// </summary>
         public static double FindTheRootOfaLinearEquation(double a, double b, double c)
         {
+            if (a == 0)
+            {
+                throw new Exception("Уравнение имеет бесконечно много корней. Параметр A равен нулю");
+            }
             double x = ((c - b) / a);
             return x;
         }
 
-        /* 5. Пользователь вводит 4 числа (X1, Y1, X2, Y2), 
-           описывающие координаты 2-х точек на координатной плоскости. 
-           Выведите уравнение прямой в формате Y=AX+B, проходящей через эти точки.*/
+        /// <summary>
+        /// Выводит уравнение прямой в формате Y=AX+B, проходящей через точки (X1, Y1, X2, Y2).
+        /// </summary>
+
         public static string FindEquationsByTwoPoints(double x1, double y1, double x2, double y2)
         {
-            double A = (y1 - y2) / (x1 - x2);
-            double B = y2 - A * x2;
 
-            return $"Уравнение прямой Y = {A} * X + {B}";
+            if (x1 == x2)
+            {
+                return $"Уравнение прямой X = {x1}";
+            }
+            else if (y1 == y2)
+            {
+                return $"Уравнение прямой Y = {y1}";
+            }
+            else
+            {
+                double A = (y1 - y2) / (x1 - x2);
+                double B = y2 - A * x2;
+
+                return $"Уравнение прямой Y = {A} * X + {B}";
+            }
         }
 
     }
