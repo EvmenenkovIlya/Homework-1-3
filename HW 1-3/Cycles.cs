@@ -40,7 +40,7 @@ namespace HW_1_3
         }        
         
         /// <summary>
-        /// 2. Выводит все числа от 1 до 1000, которые делятся на A.
+        /// 2. *Выводит все числа от 1 до 1000, которые делятся на A.
         /// </summary>
         public static void FindDivisibleNumbers(int a)
         {
@@ -148,7 +148,19 @@ namespace HW_1_3
         /// </summary>
         public static int FindGreatestCommonDivisorOfTwoNumbers(int a, int b)
         {
+            if ((a == 0) || (b == 0))
+            {
+                throw new Exception("a или b равны нулю. Числа должны быть отличные от нуля");
+            }
+
             int tmp;
+
+
+            if ((a < 0) || (b < 0))
+            {
+                a = Math.Abs(a);
+                b = Math.Abs(b);
+            }
 
             ChangeNumbers(ref b, ref a);
 
@@ -160,44 +172,116 @@ namespace HW_1_3
             }
             return a;
         }
+
         /// <summary>
-        /// 8.
+        /// 8. Пользователь вводит целое положительное число, которое является кубом целого числа N. Найдите число N методом половинного деления.
         /// </summary>
-        public static void Task8(int a, int b)
-        { 
-        
+        public static int FindThirdRoot(int N)
+        {
+            int leftBorder = 0;
+            int rightBorder = N;
+            int tmp = 0;
+            while (tmp * tmp * tmp != N)
+            {
+                tmp = (leftBorder + rightBorder) / 2;
+                if (tmp * tmp * tmp > N)
+                {
+                    rightBorder = tmp;
+                }
+                else
+                {
+                    leftBorder = tmp;
+                }
+            }
+            return tmp;
         }
 
         /// <summary>
-        /// 
+        /// 9. Найти количество нечетных цифр этого числа.
         /// </summary>
-        public static void Task9(int a, int b)
-        { 
-        
+        public static int FindCountOfOddNumbers(int N)
+        {
+            if (N < 0)
+            {
+                N = Math.Abs(N);
+            }
+            int count = 0;
+            for (int i = N; i != 0; i /= 10)
+            {
+                if ((i % 10) % 2 == 1)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         /// <summary>
-        /// 
+        /// 10. Найти число, которое является зеркальным отображением последовательности цифр заданного числа
         /// </summary>
-        public static void Task11(int a, int b) 
-        { 
-
+        public static int FindMirrorNumber(int N)
+        {
+            int tmp = 0;
+            for (int i = N; i != 0; i /= 10)
+            {
+                tmp = tmp * 10 + i % 10;
+            }
+            return tmp;
         }
 
         /// <summary>
-        /// 
+        /// 11. *Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных.
         /// </summary>
-        public static void Task12(int a, int b)
-        { 
+        public static void WriteNumberIfCountOfEvenMoreThanOdd(int N) 
+        {
+            if (N <= 0)
+            {
+                throw new Exception("N < 0. Номер числа должен быть больше нуля.");
+            }
 
+            int even = 0;
+            int odd = 0;
+            for (int i = 0; i < N; i++)
+            {                
+                for (int tmp = i; tmp > 0; tmp /= 10)
+                {
+                    int tmpCycle = tmp % 10;
+                    if (tmpCycle % 2 == 0)
+                    {
+                        even += tmpCycle;
+                    }
+                    else
+                    {
+                        odd += tmpCycle;
+                    }
+                }
+                if (even > odd)
+                {
+                    Console.WriteLine(i);
+                }
+                even = 0;
+                odd = 0;
+            }
         }
 
-        /*Пользователь вводит целое положительное число, которое является кубом целого числа N. Найдите число N методом половинного деления.
-         Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
-         Пользователь вводит 1 число. Найти число, которое является зеркальным отображением последовательности цифр заданного числа, например, задано число 123, вывести 321.
-         Пользователь вводит целое положительное  число (N). Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных. 
-         Пользователь вводит 2 числа. Сообщите, есть ли в написании двух чисел одинаковые цифры. Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.*/
-
-
+        /// <summary>
+        /// 12. Сообщите, есть ли в написании двух чисел одинаковые цифры. Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”
+        /// </summary>
+        public static bool ThereAreTheSameNumbers(int a, int b)
+        {
+            while (a != 0)
+            {
+                int tmp = a % 10;
+                for (int i = b; i != 0; i /= 10)
+                {
+                    if (tmp == i % 10)
+                    {
+                        return true;
+                    }
+                }
+                a /= 10;
+            }
+            return false;
+        }
     }
 }
