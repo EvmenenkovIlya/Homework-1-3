@@ -6,7 +6,7 @@ namespace HW_1_3
     {
         /* 1. Пользователь вводит 2 числа (A и B).
            Выведите в консоль результат деления A на B и остаток от деления.*/
-        public static void FindingDivAndMod(int a, int b)
+        public static int FindingDivAndMod(int a, int b, out int c, out int d)
         {
 
         }
@@ -21,9 +21,11 @@ namespace HW_1_3
 
         /* 3. Пользователь вводит 2 строковых(string) значения(A и B).
            Поменяйте содержимое переменных A и B местами.*/
-        public static void SwapVariableWithEachOther(int a, int b)
+        public static void SwapVariables(ref string a, ref string b)
         {
-
+            string tmp = b;
+            b = a; 
+            a = tmp;
         }
 
         /* 4. Пользователь вводит 3 не равных 0 числа (A, B и С).
