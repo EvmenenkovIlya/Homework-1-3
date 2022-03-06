@@ -42,11 +42,8 @@ namespace HW_1_3
             a = tmp;
         }
 
-        /* 4. Пользователь вводит 3 не равных 0 числа (A, B и С).
-           */
-
         /// <summary>
-        /// 3. Выводит в консоль решение(значение X) линейного уравнения 
+        /// 4. Выводит в консоль решение(значение X) линейного уравнения 
         /// стандартного вида,где A*X+B=C.
         /// </summary>
         public static double FindTheRootOfaLinearEquation(double a, double b, double c)
@@ -60,7 +57,7 @@ namespace HW_1_3
         }
 
         /// <summary>
-        /// Выводит уравнение прямой в формате Y=AX+B, проходящей через точки (X1, Y1, X2, Y2).
+        /// 5. Выводит уравнение прямой в формате Y=AX+B, проходящей через точки (X1, Y1, X2, Y2).
         /// </summary>
 
         public static string FindEquationsByTwoPoints(double x1, double y1, double x2, double y2)
