@@ -269,6 +269,12 @@ namespace HW_1_3
         /// </summary>
         public static bool ThereAreTheSameNumbers(int a, int b)
         {
+            if ((a < 0) || (b < 0))
+            {
+                a = Math.Abs(a);
+                b = Math.Abs(b);
+            }
+
             while (a != 0)
             {
                 int tmp = a % 10;

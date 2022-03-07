@@ -102,6 +102,11 @@ namespace HW_1_3
             double D = B * B - 4 * A * C;
             double X1, X2;
 
+            if ((A == 0) || (B == 0))
+            {
+                throw new Exception("A == 0. Уравнение не квадратное.");
+            }
+
             if (D == 0)
             {
                 X1 = -B / (2 * A);
@@ -136,44 +141,62 @@ namespace HW_1_3
             {
                 switch (number / 10)
                 {
-                    case (2): first = "Двадцать"; 
+                    case (2): 
+                        first = "Двадцать"; 
                         break;
-                    case (3): first = "Тридцать"; 
+                    case (3): 
+                        first = "Тридцать"; 
                         break;
-                    case (4): first = "Сорок"; 
+                    case (4):
+                        first = "Сорок"; 
                         break;
-                    case (5): first = "Пятьдесят"; 
+                    case (5): 
+                        first = "Пятьдесят"; 
                         break;
-                    case (6): first = "Шестьдесят";
+                    case (6): 
+                        first = "Шестьдесят";
                         break;
-                    case (7): first = "Семьдесят"; 
+                    case (7):
+                        first = "Семьдесят"; 
                         break;
-                    case (8): first = "Восемьдесят"; 
+                    case (8): 
+                        first = "Восемьдесят"; 
                         break;
-                    case (9): first = "Девяносто";
+                    case (9):
+                        first = "Девяносто";
                         break;
                 }
                 switch (number % 10)
                 {
-                    case (0): second = ""; 
+                    case (0):
+                        second = ""; 
                         break;
-                    case (1): second = "один"; 
+                    case (1): 
+                        second = "один"; 
                         break;
-                    case (2): second = "два"; 
+                    case (2): 
+                        second = "два"; 
                         break;
-                    case (3): second = "три"; 
+                    case (3):
+                        second = "три"; 
                         break;
-                    case (4): second = "четыре";
+                    case (4): 
+                        second = "четыре";
                         break;
-                    case (5): second = "пять"; 
+                    case (5): 
+                        second = "пять"; 
                         break;
-                    case (6): second = "шесть";
+                    case (6): 
+                        second = "шесть";
                         break;
-                    case (7): second = "семь"; 
+                    case (7):
+                        second = "семь"; 
                         break;
-                    case (8): second = "восемь"; 
+                    case (8): 
+                        second = "восемь"; 
                         break;
-                    case (9): second = "девять"; 
+                    case (9): 
+                        second = "девять"; 
                         break;
                 }
                 return $"{first} {second}";
@@ -182,25 +205,35 @@ namespace HW_1_3
             {
                 switch (number)
                 {
-                    case (10): first = "Десять"; 
+                    case (10): 
+                        first = "Десять"; 
                         break;
-                    case (11): first = "Одиннадцать"; 
+                    case (11): 
+                        first = "Одиннадцать"; 
                         break;
-                    case (12): first = "Двенадцать"; 
+                    case (12): 
+                        first = "Двенадцать"; 
                         break;
-                    case (13): first = "Тринадцать"; 
+                    case (13): 
+                        first = "Тринадцать"; 
                         break;
-                    case (14): first = "Четырнадцать"; 
+                    case (14): 
+                        first = "Четырнадцать"; 
                         break;
-                    case (15): first = "Пятнадцать"; 
+                    case (15): 
+                        first = "Пятнадцать"; 
                         break;
-                    case (16): first = "Шестнадцать";
+                    case (16): 
+                        first = "Шестнадцать";
                         break;
-                    case (17): first = "Семнадцать";
+                    case (17): 
+                        first = "Семнадцать";
                         break;
-                    case (18): first = "Восемнадцать"; 
+                    case (18): 
+                        first = "Восемнадцать"; 
                         break;
-                    case (19): first = "Девятнадцать"; 
+                    case (19): 
+                        first = "Девятнадцать"; 
                         break;
                 }
                 return $"{first}";
