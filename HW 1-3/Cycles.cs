@@ -10,12 +10,9 @@ namespace HW_1_3
     {
         public static void ChangeNumbers(ref int a, ref int b)
         {
-            if (b < a)
-            {
-                int tmp = b;
-                b = a;
-                a = tmp;
-            }
+            int tmp = b;
+            b = a;
+            a = tmp;
         }
 
         /// <summary>
@@ -33,31 +30,35 @@ namespace HW_1_3
             }
             while (b != 0)
             {
-                tmp *=  a;
+                tmp *= a;
                 b--;
             }
             return tmp;
-        }        
-        
+        }
+
         /// <summary>
         /// 2. *Выводит все числа от 1 до 1000, которые делятся на A.
         /// </summary>
-        public static void FindDivisibleNumbers(int a)
+        public static int[] FindDivisibleNumbers(int a)
         {
-            int tmp = a;
             if (a < 0)
             {
-                tmp = Math.Abs(a);
+                throw new Exception("Уравнение имеет бесконечно много корней. Параметр A равен нулю");
             }
-            for (int i = a; i <= 1000; i += tmp)
-            {
-                if (i == 0)
-                {
-                    continue;
-                }
+            int countOfNumbers = 0;
 
-               Console.Write($"{i} ");
+            for (int i = a; i <= 1000; i += a)
+            {
+                countOfNumbers += 1;
             }
+
+            int[] numbers = new int[countOfNumbers];
+
+            for (int i = a; i <= 1000; i += a)
+            {
+                numbers[i / a - 1] = i;
+            }
+            return numbers;
         }
 
         /// <summary>
@@ -87,8 +88,8 @@ namespace HW_1_3
             }
 
             while (a % i != 0)
-            {             
-                i -= 1;            
+            {
+                i -= 1;
             }
 
             return i;
@@ -100,9 +101,10 @@ namespace HW_1_3
         public static int FindSumAllNumbersWhichAreDividedInto7(int a, int b)
         {
             int sum = 0;
-
-            ChangeNumbers(ref a, ref b);
-
+            if (b < a)
+            {
+                ChangeNumbers(ref a, ref b);
+            }
             for (int i = a; i <= b; i++)
             {
                 if (i % 7 == 0)
@@ -161,8 +163,10 @@ namespace HW_1_3
                 a = Math.Abs(a);
                 b = Math.Abs(b);
             }
-
-            ChangeNumbers(ref b, ref a);
+            if (b < a)
+            {
+                ChangeNumbers(ref b, ref a);
+            }
 
             while (b != 0)
             {
@@ -232,36 +236,34 @@ namespace HW_1_3
         /// <summary>
         /// 11. *Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных.
         /// </summary>
-        public static void WriteNumberIfCountOfEvenMoreThanOdd(int N) 
+        public static int[] WriteNumberIfCountOfEvenMoreThanOdd(int N)
         {
             if (N <= 0)
             {
                 throw new Exception("N < 0. Номер числа должен быть больше нуля.");
             }
 
-            int even = 0;
-            int odd = 0;
+            int countOfNumbers = 0;
+
             for (int i = 0; i < N; i++)
-            {                
-                for (int tmp = i; tmp > 0; tmp /= 10)
+            {
+                if (Cycles.SumEvenIsMore(i))
                 {
-                    int tmpCycle = tmp % 10;
-                    if (tmpCycle % 2 == 0)
-                    {
-                        even += tmpCycle;
-                    }
-                    else
-                    {
-                        odd += tmpCycle;
-                    }
+                    countOfNumbers += 1;
                 }
-                if (even > odd)
-                {
-                    Console.WriteLine(i);
-                }
-                even = 0;
-                odd = 0;
             }
+            int[] numbers = new int[countOfNumbers];
+
+            for (int i = 0; i < N; i++)
+            {
+                if (Cycles.SumEvenIsMore(i))
+                {
+                    numbers[numbers.Length - countOfNumbers] = i;
+                    countOfNumbers -= 1;
+                }
+            }
+            return numbers;
+
         }
 
         /// <summary>
@@ -289,5 +291,35 @@ namespace HW_1_3
             }
             return false;
         }
+
+        public static bool SumEvenIsMore(int N)
+            {
+            int even = 0;
+            int odd = 0;
+
+            for (int i = N; i > 0; i /= 10)
+            {
+                int tmpCycle = i % 10;
+                if (tmpCycle % 2 == 0)
+                {
+                    even += tmpCycle;
+                }
+                else
+                {
+                    odd += tmpCycle;
+                }
+            }
+            if (even > odd)
+            {
+                return true;
+            }
+            else 
+            { 
+                return false;
+            }
+
+            
+        }
+
     }
 }

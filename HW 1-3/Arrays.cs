@@ -8,15 +8,15 @@ namespace HW_1_3
 {
     internal class Arrays
     {
-        public static int[] GenerateArray()
-        {           
+        public static int[] GenerateArray(int N)
+        {
             Random rand = new Random();
-            int[] arr = new int[10];
+            int[] arr = new int[N];
             for (int i = 0; i < arr.Length; i++)
-            { 
-            arr[i] = rand.Next(-100, 101);
+            {
+                arr[i] = rand.Next(-100, 101);
             }
-            return arr;       
+            return arr;
         }
 
         public static void PrintArray(int[] arr)
@@ -33,12 +33,16 @@ namespace HW_1_3
         /// </summary>
         public static int FindMinOfArray(int[] arr)
         {
+            if (arr.Length == 0)
+            {
+                throw new Exception("Пустой массив");
+            }
             int tmp = arr[0];
             for (int i = 0; i < arr.Length; i++)
             {
                 if (tmp > arr[i])
-                { 
-                tmp = arr[i];
+                {
+                    tmp = arr[i];
                 }
             }
             return tmp;
@@ -49,6 +53,10 @@ namespace HW_1_3
         /// </summary>
         public static int FindMaxOfArray(int[] arr)
         {
+            if (arr.Length == 0)
+            {
+                throw new Exception("Пустой массив");
+            }
             int tmp = 0;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -64,6 +72,10 @@ namespace HW_1_3
         /// </summary>
         public static int FindIndexOfMinInArray(int[] arr)
         {
+            if (arr.Length == 0)
+            {
+                throw new Exception("Пустой массив");
+            }
             int tmp = 0;
             int indx = 0;
             for (int i = 0; i < arr.Length; i++)
@@ -81,6 +93,10 @@ namespace HW_1_3
         /// </summary>
         public static int FindIndexOfMaxInArray(int[] arr)
         {
+            if (arr.Length == 0)
+            {
+                throw new Exception("Пустой массив");
+            }
             int tmp = 0;
             int indx = 0;
             for (int i = 0; i < arr.Length; i++)
@@ -103,9 +119,9 @@ namespace HW_1_3
             for (int i = 0; i < arr.Length; i++)
             {
                 if (i % 2 == 1)
-                    {
-                        sum += arr[i];
-                    }
+                {
+                    sum += arr[i];
+                }
             }
             return sum;
         }
@@ -123,5 +139,118 @@ namespace HW_1_3
             return arrReverse;
         }
 
+        /// <summary>
+        /// 7. Возвращает количество нечетных элементов массива
+        /// </summary>
+        public static int FindCountOfOddNumbersInArray(int[] arr)
+        {
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (Math.Abs(arr[i]) % 2 == 1)
+                {
+                    count += 1;
+                }
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// 8. Меняет местами первую и вторую половину массива (1234, результат 3412,  или для 12345 - 45312)
+        /// </summary>
+        public static int[] SwapHalfsOfArray(int[] arr)
+        {
+            int[] swappedArr = new int[arr.Length];
+            int halfOfLength = arr.Length / 2;
+
+
+            for (int i = 0; i < halfOfLength; i++)
+            {
+
+            }
+            return swappedArr;
+        }
+        /// <summary>
+        /// 9. Сортирует массив по возрастанию методом Bubble через for
+        /// </summary>
+        public static int[] BubbleSortFor(int[] arr)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        Cycles.ChangeNumbers(ref arr[j], ref arr[j + 1]);
+                    }
+                }
+            }
+            return arr;
+        }
+        /// <summary>
+        /// 9* Сортирует массив по повозрастанию методом Bubble через while и flag
+        /// </summary>
+        public static int[] BubbleSortWhile(int[] arr)
+        {
+            bool flag = true;
+            while (flag)
+            {
+                flag = false;
+                for (int j = 0; j < arr.Length - 1; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        Cycles.ChangeNumbers(ref arr[j], ref arr[j + 1]);
+                        flag = true;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        /// <summary>
+        /// 10. Сортирует массив по убыванию методом Insert 
+        /// </summary>
+        public static int[] InsertSortReverse(int[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int max = i;
+
+                for (int j = 0; j < i + 1; j++)
+                {
+                    if (arr[j] < arr[max])
+                    {
+                        max = j;
+                    }
+                Cycles.ChangeNumbers(ref arr[i], ref arr[max]);
+                }
+            }
+            return arr;
+        }
+
+        /// <summary>
+        /// * Сортирует массив по повозрастанию и убыванию методом Select
+        /// </summary>
+        public static int[] SelectSort(int[] arr, bool reverse = false)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int cursor = arr[i];
+                int position = i;
+                while ((position > 0) && (arr[position - 1] > cursor))
+                { 
+                    arr[position] = arr[position - 1];
+                    position -= 1;
+                }
+                arr[position] = cursor;
+            }
+            if (reverse == true) 
+                { 
+                arr = ReverseArray(arr);
+                }
+            return arr;
+         }
     }
 }

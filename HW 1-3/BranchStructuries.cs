@@ -55,42 +55,11 @@ namespace HW_1_3
         /// <summary>
         /// 3. Возвращает кортеж отсортированных чисел A, B, C.
         /// </summary>
-        public static (int, int, int) SortByIncrease(int A, int B, int C)
+        public static int[] SortByIncrease(int A, int B, int C)
         {
-            if (A <= B && A <= C)
-            {
-                if (B <= C)
-                {
-                    return (A, B, C);
-                }
-                else
-                {
-                    return (A, C, B);
-                }
-            }
-            else if (B <= C && B <= A)
-            {
-                if (A <= C)
-                {
-                    return (B, A, C);
-                }
-                else
-                {
-                    return (B, C, A);
-                }
-            }
-            else
-            {
-                if (A <= B)
-                {
-                    return (C, A, B);
-                }
-                else
-                {
-                    return (C, B, B);
-                }
-                
-            }
+            int[] arr = new int[] { A, B, C };
+
+            return Arrays.BubbleSortFor(arr);
         }
 
         /// <summary>
