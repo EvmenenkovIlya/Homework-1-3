@@ -138,15 +138,14 @@ namespace HW_1_3
         /// <summary>
         /// 8. Меняет местами первую и вторую половину массива (1234, результат 3412,  или для 12345 - 45312)
         /// </summary>
-        public static int[] SwapHalfsOfArray(int[] arr)
+        public static int[] SwapHalfs(int[] arr)
         {
             int[] swappedArr = new int[arr.Length];
             int halfOfLength = arr.Length / 2;
-            int tmp;
 
             for (int i = 0; i < halfOfLength; i++)
             {
-                Cycles.ChangeNumbers(ref arr[i], ref arr[i + halfOfLength + (arr.Length % 2)]);
+                Variablies.ChangeNumbers(ref arr[i], ref arr[i + halfOfLength + (arr.Length % 2)]);
             }
             return arr;
         }
@@ -162,7 +161,7 @@ namespace HW_1_3
                 {
                     if (arr[j] > arr[j + 1])
                     {
-                        Cycles.ChangeNumbers(ref arr[j], ref arr[j + 1]);
+                        Variablies.ChangeNumbers(ref arr[j], ref arr[j + 1]);
                     }
                 }
             }
@@ -181,7 +180,7 @@ namespace HW_1_3
                 {
                     if (arr[j] > arr[j + 1])
                     {
-                        Cycles.ChangeNumbers(ref arr[j], ref arr[j + 1]);
+                        Variablies.ChangeNumbers(ref arr[j], ref arr[j + 1]);
                         flag = true;
                     }
                 }
@@ -204,7 +203,7 @@ namespace HW_1_3
                     {
                         max = j;
                     }
-                    Cycles.ChangeNumbers(ref arr[i], ref arr[max]);
+                    Variablies.ChangeNumbers(ref arr[i], ref arr[max]);
                 }
             }
             return arr;

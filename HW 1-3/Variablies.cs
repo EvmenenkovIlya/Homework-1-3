@@ -2,7 +2,7 @@
 
 namespace HW_1_3
 {
-    static class Variablies
+    public static class Variablies
     {
 
         /// <summary>
@@ -15,7 +15,7 @@ namespace HW_1_3
                 throw new Exception("Делитель b равен нулю.");
             }
             div = a / b;
-            mod = b;
+            mod = a % b;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace HW_1_3
             {
                 throw new Exception("Делитель вырежения равен нулю, т.к. Равны a и b.");
             }
-            double result = ((5 * a + b * b) / (b - 1));
+            double result = ((5 * a + b * b) / (b - a));
             return result;
         }
 
@@ -53,7 +53,7 @@ namespace HW_1_3
                 throw new Exception("Уравнение имеет бесконечно много корней. Параметр A равен нулю");
             }
             double x = ((c - b) / a);
-            return x;
+            return Math.Round(x,2);
         }
 
         /// <summary>
@@ -62,23 +62,32 @@ namespace HW_1_3
 
         public static string FindEquationsByTwoPoints(double x1, double y1, double x2, double y2)
         {
+            if (y1 == y2)
+            {
+                throw new Exception("Такой прямой формата Y=AX+B не существует: y1 == y2");
+            }
+            if ((y1 == y2) && (x1 == x2) && (x1 == y1))
+            {
+                throw new Exception($"Прямая проходит через одну точку ({x1}, {y2}), Бесконечно много прямых формата Y=AX+B");
+            }
 
             if (x1 == x2)
             {
-                return $"Уравнение прямой X = {x1}";
-            }
-            else if (y1 == y2)
-            {
-                return $"Уравнение прямой Y = {y1}";
+                return $"Уравнение прямой Y = {x1}";
             }
             else
             {
-                double A = (y1 - y2) / (x1 - x2);
-                double B = y2 - A * x2;
+                double A = Math.Round((y1 - y2) / (x1 - x2), 2);
+                double B = Math.Round(y2 - A * x2, 2);
 
                 return $"Уравнение прямой Y = {A} * X + {B}";
             }
         }
-
+        public static void ChangeNumbers(ref int a, ref int b)
+        {
+            int tmp = b;
+            b = a;
+            a = tmp;
+        }
     }
 }

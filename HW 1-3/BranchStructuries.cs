@@ -69,7 +69,6 @@ namespace HW_1_3
         public static double[] FindSolutionsToAQuadraticEquation(int A, int B, int C)
         {
             double D = B * B - 4 * A * C;
-            double X1, X2;
 
             if ((A == 0) || (B == 0))
             {

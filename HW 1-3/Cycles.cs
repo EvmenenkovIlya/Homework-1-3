@@ -7,14 +7,7 @@ using System.Threading.Tasks;
 namespace HW_1_3
 {
     static class Cycles
-    {
-        public static void ChangeNumbers(ref int a, ref int b)
-        {
-            int tmp = b;
-            b = a;
-            a = tmp;
-        }
-
+    { 
         /// <summary>
         /// 1. Возводит число a в степень b.
         /// </summary>
@@ -103,7 +96,7 @@ namespace HW_1_3
             int sum = 0;
             if (b < a)
             {
-                ChangeNumbers(ref a, ref b);
+                Variablies.ChangeNumbers(ref a, ref b);
             }
             for (int i = a; i <= b; i++)
             {
@@ -165,7 +158,7 @@ namespace HW_1_3
             }
             if (b < a)
             {
-                ChangeNumbers(ref b, ref a);
+                Variablies.ChangeNumbers(ref b, ref a);
             }
 
             while (b != 0)
