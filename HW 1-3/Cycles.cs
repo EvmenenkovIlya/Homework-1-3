@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HW_1_3
 {
-    internal class Cycles
+    static class Cycles
     {
         public static void ChangeNumbers(ref int a, ref int b)
         {

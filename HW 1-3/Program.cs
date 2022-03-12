@@ -2,7 +2,7 @@
 
 
 
-int[] a = Arrays.GenerateArray(10);
+/*int[] a = Arrays.GenerateArray(10);
 Arrays.PrintArray(a);
 
 int[] tmp = new int[a.Length];
@@ -51,4 +51,18 @@ Arrays.PrintArray(Arrays.SelectSort(tmp, true));
 
 Arrays.PrintArray(BranchStructuries.SortByIncrease(3, 7, 1));
 
-Arrays.PrintArray(Cycles.WriteNumberIfCountOfEvenMoreThanOdd(100));
+Arrays.PrintArray(Cycles.WriteNumberIfCountOfEvenMoreThanOdd(100));*/
+
+
+int[,] a = TwoDimensionalArrays.GenerateRandomArray(4, 4);
+TwoDimensionalArrays.WriteArray(a);
+Console.WriteLine(TwoDimensionalArrays.FindMinOfArray(a));
+Console.WriteLine(TwoDimensionalArrays.FindMaxOfArray(a));
+Arrays.PrintArray(TwoDimensionalArrays.FindIndexOfMin(a));
+Arrays.PrintArray(TwoDimensionalArrays.FindIndexOfMax(a));
+
+
+int[] b = Arrays.GenerateArray(9);
+Arrays.PrintArray(b);
+Console.WriteLine("8 Task");
+Arrays.PrintArray(Arrays.SwapHalfsOfArray(b));

@@ -6,28 +6,8 @@ using System.Threading.Tasks;
 
 namespace HW_1_3
 {
-    internal class Arrays
-    {
-        public static int[] GenerateArray(int N)
-        {
-            Random rand = new Random();
-            int[] arr = new int[N];
-            for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = rand.Next(-100, 101);
-            }
-            return arr;
-        }
-
-        public static void PrintArray(int[] arr)
-        {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.Write(arr[i] + " ");
-            }
-            Console.WriteLine();
-        }
-
+    static class Arrays
+    {       
         /// <summary>
         /// 1. Находит минимальный элемент массива
         /// </summary>
@@ -162,13 +142,13 @@ namespace HW_1_3
         {
             int[] swappedArr = new int[arr.Length];
             int halfOfLength = arr.Length / 2;
-
+            int tmp;
 
             for (int i = 0; i < halfOfLength; i++)
             {
-
+                Cycles.ChangeNumbers(ref arr[i], ref arr[i + halfOfLength + (arr.Length % 2)]);
             }
-            return swappedArr;
+            return arr;
         }
         /// <summary>
         /// 9. Сортирует массив по возрастанию методом Bubble через for
@@ -224,7 +204,7 @@ namespace HW_1_3
                     {
                         max = j;
                     }
-                Cycles.ChangeNumbers(ref arr[i], ref arr[max]);
+                    Cycles.ChangeNumbers(ref arr[i], ref arr[max]);
                 }
             }
             return arr;
@@ -240,17 +220,46 @@ namespace HW_1_3
                 int cursor = arr[i];
                 int position = i;
                 while ((position > 0) && (arr[position - 1] > cursor))
-                { 
+                {
                     arr[position] = arr[position - 1];
                     position -= 1;
                 }
                 arr[position] = cursor;
             }
-            if (reverse == true) 
-                { 
+            if (reverse == true)
+            {
                 arr = ReverseArray(arr);
-                }
+            }
             return arr;
-         }
+        }
+
+        public static int[] CopyOfArray(int[] arr)
+        {
+            int[] tmp = new int[arr.Length];
+            Array.Copy(arr, tmp, arr.Length);
+            return tmp;
+        }
+
+        public static int[] GenerateArray(int length, int min = -100, int max = 100)
+        {
+            Random rand = new Random();
+            int[] array = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                array[i] = rand.Next(min, max + 1);
+            }
+
+            return array;
+        }
+
+        public static void PrintArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write($"{array[i]} ");
+            }
+            Console.WriteLine();
+        }
     }
 }

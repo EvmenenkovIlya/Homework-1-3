@@ -2,7 +2,7 @@
 
 namespace HW_1_3
 {
-    internal class BranchStructuries
+    static class BranchStructuries
     {
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace HW_1_3
         /// 4. Выводит в консоль решение(значения X) 
         /// квадратного уравнения стандартного вида, где A* X * X + B* X + C = 0
         /// </summary>
-        public static void FindSolutionsToAQuadraticEquation(int A, int B, int C)
+        public static double[] FindSolutionsToAQuadraticEquation(int A, int B, int C)
         {
             double D = B * B - 4 * A * C;
             double X1, X2;
@@ -78,18 +78,24 @@ namespace HW_1_3
 
             if (D == 0)
             {
-                X1 = -B / (2 * A);
-                Console.WriteLine($"У уравнения один корень: {X1}");
+                double[] roots = new double[1];
+                roots[0] = -B / (2 * A);
+                return roots;
             }
             else if (D > 0)
             {
-                X1 = (-B - Math.Sqrt(D)) / (2 * A);
-                X2 = (-B + Math.Sqrt(D)) / (2 * A);
-                Console.WriteLine($"У уравнения два корня: {X1} и {X2}");
+                double[] roots = new double[2];
+
+                roots[0] = (-B - Math.Sqrt(D)) / (2 * A);
+                roots[1] = (-B + Math.Sqrt(D)) / (2 * A);
+
+                return roots;
+                
             }
             else
             {
-                Console.WriteLine("У уравнения нет корней в области вещественных чисел");
+                double[] roots = new double[0];
+                return roots;
             }
         }
 
