@@ -18,10 +18,11 @@ namespace HW_1_3.Test
             Assert.AreEqual(expectedMod, actualMod);
             Assert.AreEqual(expectedDiv, actualDiv);
         }
-        [TestCase(10, 0, 0, 0)]
-        [TestCase(0, 0, 0, 0)]
-        [TestCase(-53, 0, 0, 0)]
-        public void FindingDivAndModTest_WhenBIsZero_ShouldThrowExeption(int a, int b, int expectedDiv, int expectedMod)
+
+        [TestCase(10, 0)]
+        [TestCase(0, 0)]
+        [TestCase(-53, 0)]
+        public void FindingDivAndModTest_WhenBIsZero_ShouldThrowExeption(int a, int b)
         {
             int div;
             int mod;
@@ -45,6 +46,7 @@ namespace HW_1_3.Test
         {
             Assert.Throws<Exception>(() => Variablies.FindTheValueOfTheExpression(a, b));
         }
+
         [TestCase("", "", "", "")]
         [TestCase("Abc", "", "", "Abc")]
         [TestCase(" ", " ", " ", " ")]
@@ -74,7 +76,6 @@ namespace HW_1_3.Test
         public static void FindTheRootOfaLinearEquationTest_WhenAIsEqualZero_ShouldThrowExeption(double a, double b, double c)
         {
             Assert.Throws<Exception>(() => Variablies.FindTheRootOfaLinearEquation(a, b, c));
-
         }
 
         [TestCase(1, 1, 2, 2, "Уравнение прямой Y = 1 * X + 0")]
@@ -97,7 +98,5 @@ namespace HW_1_3.Test
         {
             Assert.Throws<Exception>(() => Variablies.FindEquationsByTwoPoints(x1, y1, x2, y2));
         }
-
     }
-
 }

@@ -2,7 +2,7 @@
 
 namespace HW_1_3
 {
-    static class BranchStructuries
+    public static class BranchStructuries
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace HW_1_3
         }
 
         /// <summary>
-        /// 3. Возвращает кортеж отсортированных чисел A, B, C.
+        /// 3. Возвращает массив отсортированных чисел A, B, C.
         /// </summary>
         public static int[] SortByIncrease(int A, int B, int C)
         {
@@ -66,27 +66,26 @@ namespace HW_1_3
         /// 4. Выводит в консоль решение(значения X) 
         /// квадратного уравнения стандартного вида, где A* X * X + B* X + C = 0
         /// </summary>
-        public static double[] FindSolutionsToAQuadraticEquation(int A, int B, int C)
+        public static double[] FindSolutionsToAQuadraticEquation(double A, double B, double C)
         {
-            double D = B * B - 4 * A * C;
-
-            if ((A == 0) || (B == 0))
+            if (A == 0)
             {
-                throw new Exception("A == 0. Уравнение не квадратное.");
+                throw new Exception("Уравнение не квадратное. Параметр A равен нулю");
             }
+            double D = B * B - 4 * A * C;
 
             if (D == 0)
             {
                 double[] roots = new double[1];
-                roots[0] = -B / (2 * A);
+                roots[0] = Math.Round((-B / (2 * A)), 2);
                 return roots;
             }
             else if (D > 0)
             {
                 double[] roots = new double[2];
 
-                roots[0] = (-B - Math.Sqrt(D)) / (2 * A);
-                roots[1] = (-B + Math.Sqrt(D)) / (2 * A);
+                roots[0] = Math.Round((-B - Math.Sqrt(D)) / (2 * A), 2);
+                roots[1] = Math.Round((-B + Math.Sqrt(D)) / (2 * A), 2);
 
                 return roots;
                 
