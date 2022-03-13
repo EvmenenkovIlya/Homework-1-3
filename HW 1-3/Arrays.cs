@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HW_1_3
 {
-    static class Arrays
+    public static class Arrays
     {       
         /// <summary>
         /// 1. Находит минимальный элемент массива
         /// </summary>
-        public static int FindMinOfArray(int[] arr)
+        public static int FindMinElement(int[] array)
         {
-            if (arr.Length == 0)
+            if (array.Length == 0)
             {
                 throw new Exception("Пустой массив");
             }
-            int tmp = arr[0];
-            for (int i = 0; i < arr.Length; i++)
+            int tmp = array[0];
+            for (int i = 0; i < array.Length; i++)
             {
-                if (tmp > arr[i])
+                if (tmp > array[i])
                 {
-                    tmp = arr[i];
+                    tmp = array[i];
                 }
             }
             return tmp;
@@ -31,18 +27,18 @@ namespace HW_1_3
         /// <summary>
         /// 2. Находит максимальный элемент массива
         /// </summary>
-        public static int FindMaxOfArray(int[] arr)
+        public static int FindMaxElement(int[] array)
         {
-            if (arr.Length == 0)
+            if (array.Length == 0)
             {
                 throw new Exception("Пустой массив");
             }
             int tmp = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (tmp < arr[i])
+                if (tmp < array[i])
                 {
-                    tmp = arr[i];
+                    tmp = array[i];
                 }
             }
             return tmp;
@@ -50,19 +46,19 @@ namespace HW_1_3
         /// <summary>
         /// 3. Находит индекс минимального элемента массива
         /// </summary>
-        public static int FindIndexOfMinInArray(int[] arr)
+        public static int FindIndexOfMinElement(int[] array)
         {
-            if (arr.Length == 0)
+            if (array.Length == 0)
             {
                 throw new Exception("Пустой массив");
             }
-            int tmp = 0;
+            int tmp = array[0];
             int indx = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (tmp > arr[i])
+                if (tmp > array[i])
                 {
-                    tmp = arr[i];
+                    tmp = array[i];
                     indx = i;
                 }
             }
@@ -71,19 +67,19 @@ namespace HW_1_3
         /// <summary>
         /// 4. Находит индекс максимального элемента массива
         /// </summary>
-        public static int FindIndexOfMaxInArray(int[] arr)
+        public static int FindIndexOfMaxElement(int[] array)
         {
-            if (arr.Length == 0)
+            if (array.Length == 0)
             {
                 throw new Exception("Пустой массив");
             }
-            int tmp = 0;
+            int tmp = array[0];
             int indx = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (tmp < arr[i])
+                if (tmp < array[i])
                 {
-                    tmp = arr[i];
+                    tmp = array[i];
                     indx = i;
                 }
             }
@@ -93,14 +89,18 @@ namespace HW_1_3
         /// <summary>
         /// 5. Вычисляет сумму элементов массива с нечетными индексами
         /// </summary>
-        public static int CalculatesTheSumOfElementsWithOddIndices(int[] arr)
+        public static int CalculatesTheSumOfElementsWithOddIndices(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new Exception("Пустой массив");
+            }
             int sum = 0;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 if (i % 2 == 1)
                 {
-                    sum += arr[i];
+                    sum += array[i];
                 }
             }
             return sum;
@@ -109,20 +109,20 @@ namespace HW_1_3
         /// <summary>
         /// 6. Возвращает массив в обратном порядке
         /// </summary>
-        public static int[] ReverseArray(int[] arr)
+        public static int[] Reverse(int[] array)
         {
-            int[] arrReverse = new int[arr.Length];
-            for (int i = arr.Length - 1; i >= 0; i--)
+            int[] arrayReverse = new int[array.Length];
+            for (int i = array.Length - 1; i >= 0; i--)
             {
-                arrReverse[arr.Length - i - 1] = arr[i];
+                arrayReverse[array.Length - i - 1] = array[i];
             }
-            return arrReverse;
+            return arrayReverse;
         }
 
         /// <summary>
         /// 7. Возвращает количество нечетных элементов массива
         /// </summary>
-        public static int FindCountOfOddNumbersInArray(int[] arr)
+        public static int FindCountOfOddNumbers(int[] arr)
         {
             int count = 0;
             for (int i = 0; i < arr.Length; i++)
@@ -138,98 +138,104 @@ namespace HW_1_3
         /// <summary>
         /// 8. Меняет местами первую и вторую половину массива (1234, результат 3412,  или для 12345 - 45312)
         /// </summary>
-        public static int[] SwapHalfs(int[] arr)
+        public static int[] SwapHalfs(int[] array)
         {
-            int[] swappedArr = new int[arr.Length];
-            int halfOfLength = arr.Length / 2;
+            int[] swappedArray = new int[array.Length];
+            Array.Copy(array, swappedArray, array.Length);
+            int halfOfLength = array.Length / 2;
 
             for (int i = 0; i < halfOfLength; i++)
             {
-                Variablies.ChangeNumbers(ref arr[i], ref arr[i + halfOfLength + (arr.Length % 2)]);
+                Variablies.ChangeNumbers(ref swappedArray[i], ref swappedArray[i + halfOfLength + (swappedArray.Length % 2)]);
             }
-            return arr;
+            return swappedArray;
         }
         /// <summary>
         /// 9. Сортирует массив по возрастанию методом Bubble через for
         /// </summary>
-        public static int[] BubbleSortFor(int[] arr)
+        public static int[] BubbleSortFor(int[] array)
         {
-            for (int i = 0; i < arr.Length - 1; i++)
+            int[] sortedArray = new int[array.Length];
+            Array.Copy(array, sortedArray, array.Length);
+            for (int i = 0; i < array.Length - 1; i++)
             {
-
-                for (int j = 0; j < arr.Length - i - 1; j++)
+                for (int j = 0; j < array.Length - i - 1; j++)
                 {
-                    if (arr[j] > arr[j + 1])
+                    if (sortedArray[j] > sortedArray[j + 1])
                     {
-                        Variablies.ChangeNumbers(ref arr[j], ref arr[j + 1]);
+                        Variablies.ChangeNumbers(ref sortedArray[j], ref sortedArray[j + 1]);
                     }
                 }
             }
-            return arr;
+            return sortedArray;
         }
         /// <summary>
         /// 9* Сортирует массив по повозрастанию методом Bubble через while и flag
         /// </summary>
-        public static int[] BubbleSortWhile(int[] arr)
+        public static int[] BubbleSortWhile(int[] array)
         {
+            int[] sortedArray = new int[array.Length];
+            Array.Copy(array, sortedArray, array.Length);
             bool flag = true;
             while (flag)
             {
                 flag = false;
-                for (int j = 0; j < arr.Length - 1; j++)
+                for (int j = 0; j < array.Length - 1; j++)
                 {
-                    if (arr[j] > arr[j + 1])
+                    if (sortedArray[j] > sortedArray[j + 1])
                     {
-                        Variablies.ChangeNumbers(ref arr[j], ref arr[j + 1]);
+                        Variablies.ChangeNumbers(ref sortedArray[j], ref sortedArray[j + 1]);
                         flag = true;
                     }
                 }
             }
-            return arr;
+            return sortedArray;
         }
 
         /// <summary>
         /// 10. Сортирует массив по убыванию методом Insert 
         /// </summary>
-        public static int[] InsertSortReverse(int[] arr)
+        public static int[] InsertSortReverse(int[] array)
         {
-            for (int i = 0; i < arr.Length; i++)
+            int[] sortedArray = Arrays.CopyOfArray(array);
+            for (int i = 0; i < array.Length; i++)
             {
                 int max = i;
 
                 for (int j = 0; j < i + 1; j++)
                 {
-                    if (arr[j] < arr[max])
+                    if (sortedArray[j] < sortedArray[max])
                     {
                         max = j;
                     }
-                    Variablies.ChangeNumbers(ref arr[i], ref arr[max]);
+                    Variablies.ChangeNumbers(ref sortedArray[i], ref sortedArray[max]);
                 }
             }
-            return arr;
+            return sortedArray;
         }
 
         /// <summary>
         /// * Сортирует массив по повозрастанию и убыванию методом Select
         /// </summary>
-        public static int[] SelectSort(int[] arr, bool reverse = false)
+        public static int[] SelectSort(int[] array, bool reverse = false)
         {
-            for (int i = 0; i < arr.Length; i++)
+            int[] sortedArray = Arrays.CopyOfArray(array);
+            for (int i = 0; i < array.Length; i++)
             {
-                int cursor = arr[i];
+                int cursor = sortedArray[i];
                 int position = i;
-                while ((position > 0) && (arr[position - 1] > cursor))
+                while ((position > 0) && (sortedArray[position - 1] > cursor))
                 {
-                    arr[position] = arr[position - 1];
+                    sortedArray[position] = sortedArray[position - 1];
                     position -= 1;
                 }
-                arr[position] = cursor;
+                sortedArray[position] = cursor;
             }
             if (reverse == true)
             {
-                arr = ReverseArray(arr);
+                sortedArray = Reverse(sortedArray);
             }
-            return arr;
+            return sortedArray;
         }
 
         public static int[] CopyOfArray(int[] arr)

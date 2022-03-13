@@ -12,11 +12,9 @@ namespace HW_1_3.Test
         [TestCase(-5, 2, -2, -1)]
         public void FindingDivAndModTest(int a, int b, int expectedDiv, int expectedMod)
         {
-            int actualDiv;
-            int actualMod;
-            Variablies.FindingDivAndMod(a, b, out actualDiv, out actualMod);
-            Assert.AreEqual(expectedMod, actualMod);
+            Variablies.FindingDivAndMod(a, b, out int actualDiv, out int actualMod);
             Assert.AreEqual(expectedDiv, actualDiv);
+            Assert.AreEqual(expectedMod, actualMod);            
         }
 
         [TestCase(10, 0)]
@@ -24,9 +22,7 @@ namespace HW_1_3.Test
         [TestCase(-53, 0)]
         public void FindingDivAndModTest_WhenBIsZero_ShouldThrowExeption(int a, int b)
         {
-            int div;
-            int mod;
-            Assert.Throws<Exception>(() => Variablies.FindingDivAndMod(a, b, out div, out mod));
+            Assert.Throws<Exception>(() => Variablies.FindingDivAndMod(a, b, out int div, out int mod));
         }
 
         [TestCase(10, 5, -15)]
@@ -39,10 +35,10 @@ namespace HW_1_3.Test
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(10, 10, 0)]
-        [TestCase(0, 0, 0)]
-        [TestCase(-4, -4, 0)]
-        public static void FindTheValueOfTheExpressionTest_WhenAIsEqualB_ShouldThrowExeption(double a, double b, double expected)
+        [TestCase(10, 10)]
+        [TestCase(0, 0)]
+        [TestCase(-4, -4)]
+        public static void FindTheValueOfTheExpressionTest_WhenAIsEqualB_ShouldThrowExeption(double a, double b)
         {
             Assert.Throws<Exception>(() => Variablies.FindTheValueOfTheExpression(a, b));
         }
