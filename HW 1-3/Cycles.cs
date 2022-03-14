@@ -3,7 +3,7 @@
 
 namespace HW_1_3
 {
-    static class Cycles
+    public static class Cycles
     { 
         /// <summary>
         /// 1. Возводит число a в степень b.
@@ -23,7 +23,7 @@ namespace HW_1_3
                 tmp *= a;
                 b--;
             }
-            return tmp;
+            return Math.Round(tmp,2);
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace HW_1_3
         /// </summary>
         public static int[] FindDivisibleNumbers(int a)
         {
-            if (a < 0)
+            if ((a <= 0) || (a >= 1000))
             {
-                throw new Exception("Уравнение имеет бесконечно много корней. Параметр A равен нулю");
+                throw new Exception("A должно быть в диапазоне от 1 до 1000");
             }
             int countOfNumbers = 0;
 
@@ -57,12 +57,18 @@ namespace HW_1_3
         public static int ReturnCountOfNumbersSquareLessThanA(int a)
         {
             int countOfNumbers = 0;
+
+            if (a == 0)
+            {
+                return countOfNumbers;
+            }
+
             while (countOfNumbers * countOfNumbers < a)
             {
                 countOfNumbers++;
             }
 
-            return countOfNumbers;
+            return countOfNumbers - 1;
         }
 
         /// <summary>
@@ -70,12 +76,17 @@ namespace HW_1_3
         /// </summary>
         public static int FindTheLargestDivisor(int a)
         {
-            int i = a - 1;
-
             if (a <= 0)
             {
                 throw new Exception("A <= 0. Число должно быть больше нуля");
             }
+
+            if (a == 1)
+            {
+                return a;
+            }
+
+            int i = a - 1;
 
             while (a % i != 0)
             {
@@ -147,7 +158,6 @@ namespace HW_1_3
 
             int tmp;
 
-
             if ((a < 0) || (b < 0))
             {
                 a = Math.Abs(a);
@@ -170,15 +180,16 @@ namespace HW_1_3
         /// <summary>
         /// 8. Пользователь вводит целое положительное число, которое является кубом целого числа N. Найдите число N методом половинного деления.
         /// </summary>
-        public static int FindThirdRoot(int N)
+        public static double FindThirdRoot(double N)
         {
-            int leftBorder = 0;
-            int rightBorder = N;
-            int tmp = 0;
-            while (tmp * tmp * tmp != N)
+            double leftBorder = 0;
+            double rightBorder = N;
+            double tmp = 0;
+            double error = 0.01;
+            while ((N > Math.Pow(tmp, 3) + error) || (N < Math.Pow(tmp, 3) - error))
             {
                 tmp = (leftBorder + rightBorder) / 2;
-                if (tmp * tmp * tmp > N)
+                if (Math.Pow(tmp, 3) > N)
                 {
                     rightBorder = tmp;
                 }
@@ -265,6 +276,10 @@ namespace HW_1_3
             {
                 a = Math.Abs(a);
                 b = Math.Abs(b);
+            }
+            if ((a == 0) || (b == 0))
+            {
+                return true;
             }
 
             while (a != 0)
