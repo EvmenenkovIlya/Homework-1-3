@@ -277,7 +277,7 @@ namespace HW_1_3
                 a = Math.Abs(a);
                 b = Math.Abs(b);
             }
-            if ((a == 0) || (b == 0))
+            if ((a == 0) && (b == 0))
             {
                 return true;
             }

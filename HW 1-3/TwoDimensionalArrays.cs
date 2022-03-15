@@ -2,7 +2,7 @@
 
 namespace HW_1_3
 {
-    static class TwoDimensionalArrays
+    public static class TwoDimensionalArrays
     {
         /// <summary>
         /// 1. Находит минимальный элемент массива
@@ -134,7 +134,7 @@ namespace HW_1_3
             {
                 for (int j = 0; j < i; j++)
                 {
-                    Variablies.ChangeNumbers(ref array[i, j], ref array[j,i]);
+                    Variablies.ChangeNumbers(ref result[i, j], ref result[j,i]);
                 }
             }
             return result;
