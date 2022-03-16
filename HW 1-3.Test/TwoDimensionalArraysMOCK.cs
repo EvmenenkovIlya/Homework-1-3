@@ -3,16 +3,7 @@
 
 namespace HW_1_3.Test
 {
-    public enum TDAMockType
-    { 
-    empty,
-    sort,
-    unsort,
-    allZero,
-    oneElement,
-    square,
-    mirrorSquare
-    }
+
     public class TwoDimensionalArraysMOCK
     {
         public static int[,] GetMOCK(TDAMockType type)

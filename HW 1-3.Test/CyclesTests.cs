@@ -145,6 +145,10 @@ namespace HW_1_3.Test
         [TestCase(1235, 4896, false)]
         [TestCase(1, 1, true)]
         [TestCase(0, 0, true)]
+        [TestCase(-30, 303, true)]
+        [TestCase(303, 0, true)]
+        [TestCase(0, 303, true)]
+
         public static void ThereAreTheSameNumbersTest(int a, int b, bool expectedResult)
         {
             bool actualResult = Cycles.ThereAreTheSameNumbers(a, b);

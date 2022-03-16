@@ -277,11 +277,27 @@ namespace HW_1_3
                 a = Math.Abs(a);
                 b = Math.Abs(b);
             }
-            if ((a == 0) && (b == 0))
-            {
-                return true;
-            }
 
+            if ((a == 0) || (b == 0))
+            {
+                if ((a == 0) && (b == 0))
+                {
+                    return true;
+                }
+                else
+                {
+                    int tmp  = (a == 0) ? b : a;
+                    for (int i = tmp; i != 0; i /= 10)
+                    {
+                        if (i % 10 == 0)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }                
+            }
+            
             while (a != 0)
             {
                 int tmp = a % 10;
